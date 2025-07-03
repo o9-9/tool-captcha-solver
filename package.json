@@ -1,7 +1,7 @@
 {
     "name": "mtcrackcha",
     "description": "a simple library that uses Gemini to solve MTCaptcha challenges",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "module",
     "author": {
         "name": "VillainsRule",
