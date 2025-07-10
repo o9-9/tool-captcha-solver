@@ -27,5 +27,8 @@
         "mtcaptcha",
         "captcha",
         "solver"
-    ]
+    ],
+    "scripts": {
+        "doesitwork": "bun tests/does-it-work.js"
+    }
 }
