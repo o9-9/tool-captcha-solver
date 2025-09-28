@@ -1,7 +1,7 @@
 {
     "name": "mtcrackcha",
     "description": "a simple library that uses Gemini to solve MTCaptcha challenges",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "type": "module",
     "author": {
         "name": "VillainsRule",
@@ -29,6 +29,8 @@
         "solver"
     ],
     "scripts": {
-        "doesitwork": "bun tests/does-it-work.js"
+        "doesitwork": "bun tests/does-it-work.js",
+        "test": "bun tests/edpuzzle.js",
+        "test-max": "bun tests/consecutive.js"
     }
 }
