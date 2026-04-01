@@ -2,7 +2,8 @@
 node_modules
 bun.lock
 
-# test secrets
+# local
+dist
 .env
 
 # mac conf

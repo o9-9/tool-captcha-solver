@@ -31,8 +31,8 @@ const URLSafeBase64Int2CharMap = [
     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-', '_'
 ];
 
-function getKeyHist(fseed) {
-    const arr = new Array(fseed.length);
+function getKeyHist(fseed: string): number[] {
+    const arr = new Array(fseed.length) as number[];
     let hsh = URLSafeBase64CharCode2IntMap[fseed.charCodeAt(fseed.length - 0x1)];
     for (let index = 0x0; index < fseed.length; index++) {
         const one = fseed.charCodeAt(index);
@@ -43,7 +43,7 @@ function getKeyHist(fseed) {
     return arr.slice(0x0, arr.length);
 }
 
-export function getKeesString(fseed) {
+export function getKeesString(fseed: string): string {
     const keyHist = getKeyHist(fseed);
     const arr = new Array(keyHist.length);
     for (let index = 0; index < keyHist.length; index++) {
@@ -52,31 +52,31 @@ export function getKeesString(fseed) {
     return arr.join("");
 }
 
-function URLSafeBase64CharToInt(char) {
+function URLSafeBase64CharToInt(char: number | string): number {
     if (typeof char === 'string') char = char.charCodeAt(0x0);
     const int = URLSafeBase64CharCode2IntMap[char % 0x100];
     if (int < 0x0) throw 'well something broke';
     return int;
 }
 
-function URLSafeBase64IntToChar(i) {
-    if (0 > i || i > 63) throw new ValueError('arg i must be between 0 .. 63 inclusive');
+function URLSafeBase64IntToChar(i: number): string {
+    if (0 > i || i > 63) throw new Error('arg i must be between 0 .. 63 inclusive');
     return URLSafeBase64Int2CharMap[i % 64];
 }
 
-function URLSafeBase4096IntToChar(i) {
-    if (0 > i || i > 4095) throw new ValueError('arg i must be between 0 .. 4095 inclusive');
+function URLSafeBase4096IntToChar(i: number): string {
+    if (0 > i || i > 4095) throw new Error('arg i must be between 0 .. 4095 inclusive');
     return '' + URLSafeBase64IntToChar(i >> 6) + URLSafeBase64IntToChar(i & 63);
 }
 
-function URLSafeBase64Str2IntArray(string) {
+function URLSafeBase64Str2IntArray(string: string): number[] {
     const array = [];
     for (let index = 0; index < string.length; index++)
         array.push(URLSafeBase64CharToInt(string.charAt(index)));
     return array;
 }
 
-function hashIntAry(int_array) {
+function hashIntAry(int_array: number[]): number {
     let hsh = 0;
 
     let index = 0;
@@ -88,7 +88,7 @@ function hashIntAry(int_array) {
     return hsh;
 }
 
-export function handleFoldChlg(fseed, fslots, fdepth) {
+export function handleFoldChlg(fseed: string, fslots: number, fdepth: number): string {
     let hsh, int_array;
 
     if (!fseed || fslots < 1) return '0';
@@ -105,7 +105,7 @@ export function handleFoldChlg(fseed, fslots, fdepth) {
     return res.join('');
 }
 
-function foldBase64IntArray(a1, foldCount) {
+function foldBase64IntArray(a1: number[], foldCount: number): number[] {
     const a2 = a1.slice().reverse(), a3 = a1.slice();
     let offset = 0, x = 0, y = 0, z = 0, i = 0;
 

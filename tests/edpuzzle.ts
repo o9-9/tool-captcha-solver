@@ -1,9 +1,9 @@
-import MTCaptcha from '../lib/MTCaptcha.js';
+import MTCaptcha from '../src/index.js';
 
 const mtc = new MTCaptcha({
     siteKey: 'MTPublic-305dpdlj4',
     host: 'https://edpuzzle.com',
-    geminiKey: process.env.GEMINI_TEST_KEY
+    mistralKey: process.env.MISTRAL_TEST_KEY
 });
 
 const now = Date.now();

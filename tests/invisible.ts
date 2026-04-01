@@ -1,4 +1,4 @@
-import MTCaptcha from '../lib/MTCaptcha.js';
+import MTCaptcha from '../src/index.js';
 
 const mtc = new MTCaptcha({
     siteKey: 'MTPublic-tqNCRE0GS',
